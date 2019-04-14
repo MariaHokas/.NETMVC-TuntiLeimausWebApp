@@ -84,6 +84,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -169,6 +171,43 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TuntiLeimausController.cs" />
+    <Compile Include="DataAccess\AspNetRoles.cs">
+      <DependentUpon>TuntiLeimausModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\AspNetUserClaims.cs">
+      <DependentUpon>TuntiLeimausModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\AspNetUserLogins.cs">
+      <DependentUpon>TuntiLeimausModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\AspNetUsers.cs">
+      <DependentUpon>TuntiLeimausModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\C__MigrationHistory.cs">
+      <DependentUpon>TuntiLeimausModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\Luokkahuone.cs">
+      <DependentUpon>TuntiLeimausModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\TuntiLeimausModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TuntiLeimausModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\TuntiLeimausModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TuntiLeimausModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\TuntiLeimausModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TuntiLeimausModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\TuntiRaportti.cs">
+      <DependentUpon>TuntiLeimausModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -177,6 +216,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\LeimausViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -185,6 +225,16 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DataAccess\TuntiLeimausModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TuntiLeimausModel.edmx</DependentUpon>
+      <LastGenOutput>TuntiLeimausModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataAccess\TuntiLeimausModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TuntiLeimausModel.edmx</DependentUpon>
+      <LastGenOutput>TuntiLeimausModel.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -210,6 +260,13 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <EntityDeploy Include="DataAccess\TuntiLeimausModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TuntiLeimausModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DataAccess\TuntiLeimausModel.edmx.diagram">
+      <DependentUpon>TuntiLeimausModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -272,6 +329,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\TuntiLeimaus\Index.cshtml" />
+    <Content Include="Views\TuntiLeimaus\TuntiRaporttiOppilas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -286,6 +345,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,198 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<head>
+    <title>Leimaus</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .page-header {
+            text-align: center;
+        }
+
+        h1, p {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .p {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+        }
+
+        .btn-circle.btn-xl {
+            width: 100px;
+            height: 100px;
+            padding: 10px 16px;
+            border-radius: 50px;
+            font-size: 22px;
+            line-height: 1.33;
+            margin-right: 40px;
+            margin-top: 30px;
+        }
+
+        .btn-circle {
+            width: 100px;
+            height: 100px;
+            padding: 6px 0px;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 22px;
+            line-height: 1.42857;
+            margin-right: 40px;
+            margin-top: 30px;
+        }
+
+        .span {
+            padding: 20px 90px;
+        }
+        /*body {
+            width: 100px;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-image: url("../../Images/etusivu_taustakuva.png");
+
+        }*/
+        .bgimg {
+            background-image: url("../../Images/etusivu_taustakuva_iso.png");
+            min-height: 10%;
+            background-size: cover;
+            background-position: initial;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    @section scripts {
+
+        <script type="text/javascript">
+            function päivitäAsiakaslistaus() {
+                $.getJSON("/TuntiLeimaus/getlist", null, function (json) {
+                    var leimaus = JSON.parse(json);
+                    var html = "";
+                    for (var index = 0; index < leimaus.length; index++) {
+                        html += "<tr>"
+
+                            +
+                            "<td>" + leimaus[index].IDLeimaus + "</td>" +
+                            "<td>" + leimaus[index].EmployeeName + "</td>" +
+                            "<td>" + leimaus[index].Sisaan + "</td>" +
+                            "<td>" + leimaus[index].Ulos + "</td>" +
+                            "</tr>\r\n";
+                    }
+                    $("#leimausList tbody").html(html);
+                    //tästä lisätty
+                });
+            }
+            // sivun alustaminen
+            $(function () {
+                päivitäAsiakaslistaus();
+                $("#SaveButton").click(function () {
+                    // luetaan käyttäjän syöttämät kentät
+                    var details = {
+                        OppilasID: $("#leiModal_Oid").val(),
+                        Sisään: $("#leiModal_Sid").val(),
+                    };
+                    $.post("/TuntiLeimaus/Sisaan/", details, function (status) {
+                        if (status == true) {
+                            alert("Sisään kirjautuminen tallennettu!");
+                            päivitäAsiakaslistaus();
+                        }
+                        else {
+                            alert("Tallennus ei onnistunut, yritä uudelleen!");
+                        }
+                    });
+                });
+                console.log("Alustus valmis!");
+            });
+            // sivun alustaminen
+            // sivun alustaminen
+            $(function () {
+                päivitäAsiakaslistaus();
+                $("#UlosButton").click(function () {
+                    // luetaan käyttäjän syöttämät kentät
+                    var details = {
+                        UserID: $("#leiModal_Oid").val(),
+                        LuokkahuoneID: $("#leiModal_Lid").val(),
+                        Ulos: $("#leiModal_Uid").val(),
+                    };
+                    $.post("/TuntiLeimaus/ulos/", details, function (status) {
+                        if (status == true) {
+                            alert("Ulos leimaus tallennettu!");
+                            päivitäAsiakaslistaus();
+                        }
+                        else {
+                            alert("Tallennus ei onnistunut, yritä uudelleen!");
+                        }
+                    });
+                });
+                console.log("Alustus valmis!");
+            });
+                    // sivun alustaminen
+        </script>
+
+    }
+
+    <div class="w3-content bgimg" style="max-width:1400px">
+        <div class="w3-container ">
+            <!-- Header -->
+            <header class="w3-container w3-content w3-padding-32" style="margin-top: 30px;">
+                @*<h1>TuntiLeimaus</h1>*@
+                @*<p style="font-family:Arial; font-size: 15px; margin-right: 100px;padding-left: 60px;">Oppimisen uusi ulottuvuus</p> <p> <span class="w3-tag w3-text-white" style="background-color:rgb(0,0,0);">Tuntileimaukseen</span></p>*@
+            </header>
+            <!-- Grid -->
+
+
+            <div class="w3-row w3-content" style="margin-top:40px;">
+                <!-- Sites -->
+                <div>
+                    <div class="container">
+                        <form class="">
+                            @*<div class="form-group">
+                                    <label class="p" for="Opiskelijanumero" style="color:white;">Opiskelijanumero:</label>
+                                    <input type="text" class="form-control" id="leiModal_Oid" placeholder="Anna opiskelijanumero">
+                                </div>
+                                <div class="form-group">
+                                    <label class="p" for="Luokkanumero" style="color:white; margin-top:30px;">Luokkanumero:</label>
+                                    <input type="text" class="form-control" id="leiModal_Lid" placeholder="Anna luokkahuoneen numero">
+                                </div>*@
+                            <div style="margin-bottom:140px;">
+                                @*<button type="button" class="button" id="SaveButton">Sisään</button>
+                                    <button type="button" class="button2" id="UlosButton">Ulos</button>*@
+                                <button type="button" class="btn btn-default btn-circle btn-lg" id="SaveButton">Sisään</button>
+                                <button type="button" class="btn btn-default btn-circle btn-lg" id="UlosButton">Ulos</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="w3-twothird w3-card">
+                    <div class="w3-container w3-card w3-white w3-margin-bottom" style="margin-left:30px">
+                        <table class="table table-bordered" id="leimausList" style=" background-color:white">
+                            <thead style="background-color:white">
+                                <tr style="background-color:white">                          
+                                    <th>Leimaus</th>
+                                    <th>User</th>
+                                    <th>Sisään</th>
+                                    <th>ulos</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
