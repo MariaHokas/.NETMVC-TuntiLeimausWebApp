@@ -63,8 +63,7 @@ namespace DBTuntiLeimaus.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Login
+        // POST: /Account/Login   
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -75,9 +74,9 @@ namespace DBTuntiLeimaus.Controllers
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            // This doesn't count login failures towards account lockout   
+            // To enable password failures to trigger account lockout, change to shouldLockout: true   
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -93,12 +92,12 @@ namespace DBTuntiLeimaus.Controllers
             }
         }
 
-        //
-        // GET: /Account/VerifyCode
+        //   
+        // GET: /Account/VerifyCode   
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
-            // Require that the user has already logged in via username/password or external login
+            // Require that the user has already logged in via username/password or external login   
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
                 return View("Error");
@@ -169,7 +168,7 @@ namespace DBTuntiLeimaus.Controllers
                     //Assign Role to user Here      
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     //Ends Here    
-                    return RedirectToAction("Index", "Users");
+                    return RedirectToAction("Index", "Home");
                 }
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
                                           .ToList(), "Name", "Name");
