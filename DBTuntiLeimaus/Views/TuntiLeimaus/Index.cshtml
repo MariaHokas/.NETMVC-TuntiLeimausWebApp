@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<DBTuntiLeimaus.ViewModels.LeimausViewModel>
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_OppilasLayoutPage1.cshtml";
 }
-
 
 <body>
 
@@ -18,25 +18,17 @@
                     <div class="container">
                         <form class="">
                             <div class="form-group">
-                <label class="p" for="Opiskelijanumero" style="color:white;">Opiskelijanumero:</label>
-                <input type="text" class="form-control" id="leiModal_Oid" placeholder="Anna opiskelijanumero">
-            </div>
+                                <label class="p" for="Opiskelijanumero" style="color:white;">Opiskelijanumero:</label>
+                                <input type="text" class="form-control" id="leiModal_Oid" placeholder="Anna opiskelijanumero">
+                            </div>
+                            <div style="margin-bottom:140px;">
 
+                                @Html.DropDownList("LuokkahuoneID", null, htmlAttributes: new { @class = "form-control", @id = "leiModal_Lid" })
 
- 
-                                   
+                                <button type="button" class="btn btn-warning" id="SaveButton">Sisään</button>
+                                <button type="button" class="btn btn-warning" id="UlosButton">Ulos</button>
 
-            <div style="margin-bottom:140px;">
-
-
-                   
-                        @Html.DropDownList("LuokkahuoneID", null, htmlAttributes: new { @class = "form-control", @id = "leiModal_Lid" })
-                 
-          
-                <button type="button" class="btn btn-warning" id="SaveButton">Sisään</button>
-                <button type="button" class="btn btn-warning" id="UlosButton">Ulos</button>
-
-            </div>
+                            </div>
                         </form>
                     </div>
                 </div>

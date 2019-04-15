@@ -157,7 +157,8 @@ namespace DBTuntiLeimaus.Controllers
                 entities.Dispose();
             }
         }
-        [Authorize(Roles = "Oppilas")]
+
+        [Authorize(Roles = "Oppilas, Admin")]
         public ActionResult TuntiRaporttiOppilas()
 
 
