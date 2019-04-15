@@ -341,6 +341,7 @@
     <Content Include="Views\TuntiLeimaus\TuntiRaporttiOpettaja.cshtml" />
     <Content Include="Views\Shared\_AdminLayoutPage1.cshtml" />
     <Content Include="Views\Shared\_OppilasLayoutPage1.cshtml" />
+    <Content Include="Views\Shared\_LoginLayoutPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

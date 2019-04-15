@@ -16,8 +16,8 @@ namespace DBTuntiLeimaus.Controllers
     public class TuntiLeimausController : Controller
     {
         // GET: TuntiLeimaus
-        public bool OK { get; private set; }
-        [Authorize]
+        public bool OK { get; private set; }      
+        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
         // GET: Leimaus
         public ActionResult Index()
         {
@@ -27,6 +27,7 @@ namespace DBTuntiLeimaus.Controllers
             ViewBag.LuokkahuoneID = new SelectList(entities.Luokkahuone, "LuokkahuoneID", "LuokkahuoneenNimi");
             return View();
         }
+        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
         public JsonResult GetList()
         {
             string userInId = User.Identity.GetUserId();
@@ -57,7 +58,7 @@ namespace DBTuntiLeimaus.Controllers
 
             return Json(json, JsonRequestBehavior.AllowGet);
         }
-
+        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
         public ActionResult Sisaan(TuntiRaportti pro)
         {
             TuntiLeimausDBEntities entities = new TuntiLeimausDBEntities();
@@ -86,7 +87,7 @@ namespace DBTuntiLeimaus.Controllers
             return Json(OK, JsonRequestBehavior.AllowGet);
 
         }
-
+        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
         public ActionResult Ulos(TuntiRaportti pro)
         {
             TuntiLeimausDBEntities entities = new TuntiLeimausDBEntities();
@@ -115,7 +116,7 @@ namespace DBTuntiLeimaus.Controllers
             return Json(OK, JsonRequestBehavior.AllowGet);
 
         }
-        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
+        [Authorize(Roles = "Oppilas")]
         public ActionResult TuntiRaporttiOpettaja()
 
 
@@ -142,8 +143,8 @@ namespace DBTuntiLeimaus.Controllers
 
                     view.ID = tuntiRaportti.IDleimaus;
                     view.Nimi = tuntiRaportti.AspNetUsers.LastName + " " + tuntiRaportti.AspNetUsers.FirstName;
-                    view.Sisään = tuntiRaportti.Sisaan.Value;
-                    view.Ulos = tuntiRaportti.Ulos.Value;
+                    view.Sisään = tuntiRaportti.Sisaan.GetValueOrDefault();
+                    view.Ulos = tuntiRaportti.Ulos.GetValueOrDefault();
                     view.Luokkahuone = tuntiRaportti.Luokkahuone.LuokkahuoneenNimi.ToString();
 
                     model.Add(view);
@@ -158,7 +159,7 @@ namespace DBTuntiLeimaus.Controllers
             }
         }
 
-        [Authorize(Roles = "Oppilas, Admin")]
+        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
         public ActionResult TuntiRaporttiOppilas()
 
 
@@ -186,8 +187,8 @@ namespace DBTuntiLeimaus.Controllers
 
                     view.ID = tuntiRaportti.IDleimaus;
                     view.Nimi = tuntiRaportti.AspNetUsers.LastName.ToString() + " " + tuntiRaportti.AspNetUsers.FirstName.ToString();
-                    view.Sisään = tuntiRaportti.Sisaan.Value;
-                    view.Ulos = tuntiRaportti.Ulos.Value;
+                    view.Sisään = tuntiRaportti.Sisaan.GetValueOrDefault();
+                    view.Ulos = tuntiRaportti.Ulos.GetValueOrDefault();
                     view.Luokkahuone = tuntiRaportti.Luokkahuone.LuokkahuoneenNimi.ToString();
 
                     model.Add(view);
@@ -203,6 +204,7 @@ namespace DBTuntiLeimaus.Controllers
         }
 
         // GET: Opettaja/Create
+        [Authorize(Roles = "Oppilas")]
         public ActionResult Create()
         {
 
@@ -213,9 +215,8 @@ namespace DBTuntiLeimaus.Controllers
         }
 
         // POST: Opettaja/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Oppilas")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IDleimaus,Sisaan,Ulos,OppilasID,LuokkahuoneID")] TuntiRaportti tuntiRaportti)
         {
@@ -225,7 +226,7 @@ namespace DBTuntiLeimaus.Controllers
             {
                 entities.TuntiRaportti.Add(tuntiRaportti);
                 entities.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("TuntiRaporttiOpettaja");
             }
 
             ViewBag.OppilasID = new SelectList(entities.AspNetUsers, "Id", "UserName", tuntiRaportti.OppilasID);
@@ -234,6 +235,7 @@ namespace DBTuntiLeimaus.Controllers
         }
 
         // GET: Opettaja/Edit/5
+        [Authorize(Roles = "Oppilas")]
         public ActionResult Edit(int? id)
         {
             TuntiLeimausDBEntities entities = new TuntiLeimausDBEntities();
@@ -252,8 +254,7 @@ namespace DBTuntiLeimaus.Controllers
         }
 
         // POST: Opettaja/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Oppilas")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IDleimaus,Sisaan,Ulos,OppilasID,LuokkahuoneID")] TuntiRaportti tuntiRaportti)
@@ -263,7 +264,7 @@ namespace DBTuntiLeimaus.Controllers
             {
                 entities.Entry(tuntiRaportti).State = EntityState.Modified;
                 entities.SaveChanges();
-                return RedirectToAction("TuntiRaporttiOppilas");
+                return RedirectToAction("TuntiRaporttiOpettaja");
             }
            
             ViewBag.LuokkahuoneID = new SelectList(entities.Luokkahuone, "LuokkahuoneID", "LuokkahuoneenNimi", tuntiRaportti.LuokkahuoneID);
@@ -271,6 +272,7 @@ namespace DBTuntiLeimaus.Controllers
         }
 
         // GET: Opettaja/Delete/5
+        [Authorize(Roles = "Oppilas")]
         public ActionResult Delete(int? id)
         {
 
@@ -288,6 +290,7 @@ namespace DBTuntiLeimaus.Controllers
         }
 
         // POST: Opettaja/Delete/5
+        [Authorize(Roles = "Oppilas")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -298,7 +301,7 @@ namespace DBTuntiLeimaus.Controllers
         TuntiRaportti tuntiRaportti = entities.TuntiRaportti.Find(id);
             entities.TuntiRaportti.Remove(tuntiRaportti);
             entities.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("TuntiRaporttiOpettaja");
         }
 
         protected override void Dispose(bool disposing)
