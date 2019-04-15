@@ -1,0 +1,66 @@
+﻿
+
+.page-header {
+    text-align: center;
+}
+
+h1, p {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.p {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.btn-circle.btn-xl {
+    width: 100px;
+    height: 100px;
+    padding: 10px 16px;
+    border-radius: 50px;
+    font-size: 22px;
+    line-height: 1.33;
+    margin-right: 40px;
+    margin-top: 30px;
+}
+
+.btn-circle {
+    width: 100px;
+    height: 100px;
+    padding: 6px 0px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 22px;
+    line-height: 1.42857;
+    margin-right: 40px;
+    margin-top: 30px;
+}
+
+.btn-warning {
+    color: black;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 193, 7, 0.75);
+    width: 100px;
+    height: 100px;
+    padding: 10px 16px;
+    border-radius: 50px;
+    font-size: 22px;
+    line-height: 1.33;
+    margin-right: 40px;
+    margin-top: 30px;
+}
+
+.span {
+    padding: 20px 90px;
+}
+
+.bgimg {
+    background-image: url("../../Images/etusivu_taustakuva_iso.png");
+    min-height: 10%;
+    background-size: cover;
+    background-position: initial;
+    background-repeat: no-repeat;
+}

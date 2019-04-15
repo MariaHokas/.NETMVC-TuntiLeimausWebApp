@@ -171,6 +171,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Opettaja.cs" />
     <Compile Include="Controllers\TuntiLeimausController.cs" />
     <Compile Include="DataAccess\AspNetRoles.cs">
       <DependentUpon>TuntiLeimausModel.tt</DependentUpon>
@@ -225,6 +226,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Leimaus.css" />
     <Content Include="DataAccess\TuntiLeimausModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TuntiLeimausModel.edmx</DependentUpon>
@@ -277,6 +279,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Leimaus.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -331,6 +334,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\TuntiLeimaus\Index.cshtml" />
     <Content Include="Views\TuntiLeimaus\TuntiRaporttiOppilas.cshtml" />
+    <Content Include="Views\TuntiLeimaus\Create.cshtml" />
+    <Content Include="Views\TuntiLeimaus\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
