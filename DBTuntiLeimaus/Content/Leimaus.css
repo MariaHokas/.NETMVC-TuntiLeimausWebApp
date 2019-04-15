@@ -64,3 +64,10 @@ h1, p {
     background-position: initial;
     background-repeat: no-repeat;
 }
+td.small {
+    margin-top: 15px;
+    text-align: center;
+    padding: 30px 0;
+    width: 10%;
+    font-size: 20px;
+}

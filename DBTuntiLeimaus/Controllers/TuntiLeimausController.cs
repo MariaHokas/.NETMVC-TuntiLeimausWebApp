@@ -108,7 +108,7 @@ namespace DBTuntiLeimaus.Controllers
 
         }
 
-        public ActionResult Oppilas(string userInId)
+        public ActionResult Opettaja(string userInId)
            
         {
             List<LeimausViewModel> model = new List<LeimausViewModel>();
@@ -188,7 +188,7 @@ namespace DBTuntiLeimaus.Controllers
         {
 
             TuntiLeimausDBEntities entities = new TuntiLeimausDBEntities();
-            ViewBag.OppilasID = new SelectList(entities.AspNetUsers, "Id", "Email");
+            ViewBag.OppilasID = new SelectList(entities.AspNetUsers, "Id", "UserName");
             ViewBag.LuokkahuoneID = new SelectList(entities.Luokkahuone, "LuokkahuoneID", "LuokkahuoneenNimi");
             return View();
         }
@@ -209,7 +209,7 @@ namespace DBTuntiLeimaus.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OppilasID = new SelectList(entities.AspNetUsers, "Id", "Email", tuntiRaportti.OppilasID);
+            ViewBag.OppilasID = new SelectList(entities.AspNetUsers, "Id", "UserName", tuntiRaportti.OppilasID);
             ViewBag.LuokkahuoneID = new SelectList(entities.Luokkahuone, "LuokkahuoneID", "LuokkahuoneenNimi", tuntiRaportti.LuokkahuoneID);
             return View(tuntiRaportti);
         }
@@ -227,7 +227,7 @@ namespace DBTuntiLeimaus.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.OppilasID = new SelectList(entities.AspNetUsers, "Id", "Email", tuntiRaportti.OppilasID);
+           
             ViewBag.LuokkahuoneID = new SelectList(entities.Luokkahuone, "LuokkahuoneID", "LuokkahuoneenNimi", tuntiRaportti.LuokkahuoneID);
             return View(tuntiRaportti);
         }
@@ -244,9 +244,9 @@ namespace DBTuntiLeimaus.Controllers
             {
                 entities.Entry(tuntiRaportti).State = EntityState.Modified;
                 entities.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("TuntiRaporttiOppilas");
             }
-            ViewBag.OppilasID = new SelectList(entities.AspNetUsers, "Id", "Email", tuntiRaportti.OppilasID);
+           
             ViewBag.LuokkahuoneID = new SelectList(entities.Luokkahuone, "LuokkahuoneID", "LuokkahuoneenNimi", tuntiRaportti.LuokkahuoneID);
             return View(tuntiRaportti);
         }
