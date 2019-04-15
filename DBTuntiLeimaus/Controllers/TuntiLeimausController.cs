@@ -21,6 +21,10 @@ namespace DBTuntiLeimaus.Controllers
         // GET: Leimaus
         public ActionResult Index()
         {
+            TuntiLeimausDBEntities entities = new TuntiLeimausDBEntities();
+            LeimausViewModel view = new LeimausViewModel();
+
+            ViewBag.LuokkahuoneID = new SelectList(entities.Luokkahuone, "LuokkahuoneID", "LuokkahuoneenNimi");
             return View();
         }
         public JsonResult GetList()
@@ -38,9 +42,12 @@ namespace DBTuntiLeimaus.Controllers
                              t.OppilasID,
                              EmployeeName = au.FirstName + " " + au.LastName,
                              t.Sisaan,
-                             t.Ulos
+                             t.Ulos,
+                             t.LuokkahuoneID
+
 
                          }).ToList();
+           
 
             string json = JsonConvert.SerializeObject(model);
             entities.Dispose();
@@ -64,10 +71,11 @@ namespace DBTuntiLeimaus.Controllers
 
                 {
                     IDleimaus = pro.IDleimaus,
+                    LuokkahuoneID = pro.LuokkahuoneID,
                     OppilasID = User.Identity.GetUserId(),
                     Sisaan = DateTime.Now,
                 };
-
+                
                 // tallennus tietokantaan
                 entities.TuntiRaportti.Add(dbItem);
                 entities.SaveChanges();
@@ -107,42 +115,8 @@ namespace DBTuntiLeimaus.Controllers
             return Json(OK, JsonRequestBehavior.AllowGet);
 
         }
-
-        public ActionResult Opettaja(string userInId)
-           
-        {
-            List<LeimausViewModel> model = new List<LeimausViewModel>();
-            TuntiLeimausDBEntities entities = new TuntiLeimausDBEntities();
-            userInId = User.Identity.GetUserId();
-            try
-            {
-
-                List<TuntiRaportti> times = entities.TuntiRaportti.ToList();
-                // muodostetaan näkymämalli tietokannan rivien pohjalta
-
-                foreach (TuntiRaportti time in times)
-                {
-
-                    LeimausViewModel view = new LeimausViewModel();
-
-                    view.ID = time.IDleimaus;
-                    view.Nimi = time.AspNetUsers.LastName + " " + time.AspNetUsers.FirstName;
-                    view.Sisaan = time.Sisaan.Value;
-                    view.Ulos = time.Ulos.Value;
-
-                    model.Add(view);
-                }
-
-            }
-            finally
-            {
-                entities.Dispose();
-            }
-
-            return View(model);
-        }
-
-        public ActionResult TuntiRaporttiOppilas()
+        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
+        public ActionResult TuntiRaporttiOpettaja()
 
 
         {
@@ -154,8 +128,8 @@ namespace DBTuntiLeimaus.Controllers
 
                 // haetaan kaikki kuluvan päivän tuntikirjaukset
                 List<TuntiRaportti> time = (from t in entities.TuntiRaportti
-                                                      where (t.OppilasID == userInId) 
-                                                      select t).ToList();
+                                            orderby t.IDleimaus descending
+                                            select t).ToList();
 
                 // ryhmitellään kirjaukset tehtävittäin ja lasketaan kestot
 
@@ -168,8 +142,52 @@ namespace DBTuntiLeimaus.Controllers
 
                     view.ID = tuntiRaportti.IDleimaus;
                     view.Nimi = tuntiRaportti.AspNetUsers.LastName + " " + tuntiRaportti.AspNetUsers.FirstName;
-                    view.Sisaan = tuntiRaportti.Sisaan.Value;
+                    view.Sisään = tuntiRaportti.Sisaan.Value;
                     view.Ulos = tuntiRaportti.Ulos.Value;
+                    view.Luokkahuone = tuntiRaportti.Luokkahuone.LuokkahuoneenNimi.ToString();
+
+                    model.Add(view);
+                }
+
+                return View(model);
+
+            }
+            finally
+            {
+                entities.Dispose();
+            }
+        }
+        [Authorize(Roles = "Oppilas")]
+        public ActionResult TuntiRaporttiOppilas()
+
+
+        {
+            //tähän luotu luokka
+            TuntiLeimausDBEntities entities = new TuntiLeimausDBEntities();
+            try
+            {
+                string userInId = User.Identity.GetUserId();
+
+                // haetaan kaikki kuluvan päivän tuntikirjaukset
+                List<TuntiRaportti> time = (from t in entities.TuntiRaportti
+                                                      where (t.OppilasID == userInId)
+                                                        orderby t.IDleimaus descending
+                                                        select t).ToList();
+
+                // ryhmitellään kirjaukset tehtävittäin ja lasketaan kestot
+
+                List<LeimausViewModel> model = new List<LeimausViewModel>();
+
+                foreach (TuntiRaportti tuntiRaportti in time)
+                {
+
+                    LeimausViewModel view = new LeimausViewModel();
+
+                    view.ID = tuntiRaportti.IDleimaus;
+                    view.Nimi = tuntiRaportti.AspNetUsers.LastName.ToString() + " " + tuntiRaportti.AspNetUsers.FirstName.ToString();
+                    view.Sisään = tuntiRaportti.Sisaan.Value;
+                    view.Ulos = tuntiRaportti.Ulos.Value;
+                    view.Luokkahuone = tuntiRaportti.Luokkahuone.LuokkahuoneenNimi.ToString();
 
                     model.Add(view);
                 }

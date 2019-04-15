@@ -1,11 +1,11 @@
-﻿
+﻿@model IEnumerable<DBTuntiLeimaus.ViewModels.LeimausViewModel>
 @{
     ViewBag.Title = "Index";
 }
 
 
 <body>
-   
+
     <link href="~/Content/Leimaus.css" rel="stylesheet" />
 
 
@@ -17,21 +17,26 @@
                 <div>
                     <div class="container">
                         <form class="">
-                            @*<div class="form-group">
-                                    <label class="p" for="Opiskelijanumero" style="color:white;">Opiskelijanumero:</label>
-                                    <input type="text" class="form-control" id="leiModal_Oid" placeholder="Anna opiskelijanumero">
-                                </div>
-                                <div class="form-group">
-                                    <label class="p" for="Luokkanumero" style="color:white; margin-top:30px;">Luokkanumero:</label>
-                                    <input type="text" class="form-control" id="leiModal_Lid" placeholder="Anna luokkahuoneen numero">
-                                </div>*@
-                            <div style="margin-bottom:140px;">
-                                @*<button type="button" class="button" id="SaveButton">Sisään</button>
-                                    <button type="button" class="button2" id="UlosButton">Ulos</button>*@
-                                <button type="button" class="btn btn-warning" id="SaveButton">Sisään</button>
-                                <button type="button" class="btn btn-warning" id="UlosButton">Ulos</button>
+                            <div class="form-group">
+                <label class="p" for="Opiskelijanumero" style="color:white;">Opiskelijanumero:</label>
+                <input type="text" class="form-control" id="leiModal_Oid" placeholder="Anna opiskelijanumero">
+            </div>
 
-                            </div>
+
+ 
+                                   
+
+            <div style="margin-bottom:140px;">
+
+
+                   
+                        @Html.DropDownList("LuokkahuoneID", null, htmlAttributes: new { @class = "form-control", @id = "leiModal_Lid" })
+                 
+          
+                <button type="button" class="btn btn-warning" id="SaveButton">Sisään</button>
+                <button type="button" class="btn btn-warning" id="UlosButton">Ulos</button>
+
+            </div>
                         </form>
                     </div>
                 </div>

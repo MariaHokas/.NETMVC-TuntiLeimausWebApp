@@ -337,6 +337,8 @@
     <Content Include="Views\TuntiLeimaus\Create.cshtml" />
     <Content Include="Views\TuntiLeimaus\Edit.cshtml" />
     <Content Include="Views\TuntiLeimaus\Delete.cshtml" />
+    <Content Include="Views\TuntiLeimaus\OpettajaRaportti.cshtml" />
+    <Content Include="Views\TuntiLeimaus\TuntiRaporttiOpettaja.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
