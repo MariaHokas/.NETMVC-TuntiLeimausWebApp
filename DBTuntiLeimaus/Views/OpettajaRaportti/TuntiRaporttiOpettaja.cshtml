@@ -2,15 +2,17 @@
 
 @{
     ViewBag.Title = "TuntiRaporttiOpettaja";
+    Layout = "~/Views/Shared/_AdminLayoutPage1.cshtml";
 }
 
 <h2>TuntiRaporttiOpettaja</h2>
-
-<p>
+<link href="~/Content/Leimaus.css" rel="stylesheet" />
+<button class="btn btn-secondary">
     @Html.ActionLink("Create New", "Create")
-</p>
+</button>
 <table class="table">
     <tr>
+        <th></th>
         <th>
             @Html.DisplayNameFor(model => model.Sisään)
         </th>
@@ -28,6 +30,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td class="small">
+            @Html.ActionLink(" ", "Edit", null, new { id = item.Id }, new { @class = "fas fa-pencil-alt" })
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Sisään)
         </td>
@@ -39,6 +44,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Luokkahuone)
+        </td>
+        <td class="small">
+            @Html.ActionLink(" ", "Delete", null, new { id = item.Id }, new { @class = "far fa-trash-alt" })
         </td>
     </tr>
 }

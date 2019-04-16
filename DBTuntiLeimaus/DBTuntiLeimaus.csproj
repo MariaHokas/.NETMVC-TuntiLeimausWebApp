@@ -172,6 +172,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Opettaja.cs" />
+    <Compile Include="Controllers\OpettajaRaporttiController.cs" />
     <Compile Include="Controllers\TuntiLeimausController.cs" />
     <Compile Include="DataAccess\AspNetRoles.cs">
       <DependentUpon>TuntiLeimausModel.tt</DependentUpon>
@@ -244,14 +245,6 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
@@ -269,6 +262,14 @@
     <Content Include="DataAccess\TuntiLeimausModel.edmx.diagram">
       <DependentUpon>TuntiLeimausModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -323,6 +324,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\TuntiLeimaus\Index.cshtml" />
+    <Content Include="Views\TuntiLeimaus\TuntiRaporttiOppilas.cshtml" />
+    <Content Include="Views\Shared\_AdminLayoutPage1.cshtml" />
+    <Content Include="Views\Shared\_OppilasLayoutPage1.cshtml" />
+    <Content Include="Views\Shared\_LoginLayoutPage1.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -332,16 +338,10 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\TuntiLeimaus\Index.cshtml" />
-    <Content Include="Views\TuntiLeimaus\TuntiRaporttiOppilas.cshtml" />
-    <Content Include="Views\TuntiLeimaus\Create.cshtml" />
-    <Content Include="Views\TuntiLeimaus\Edit.cshtml" />
-    <Content Include="Views\TuntiLeimaus\Delete.cshtml" />
-    <Content Include="Views\TuntiLeimaus\OpettajaRaportti.cshtml" />
-    <Content Include="Views\TuntiLeimaus\TuntiRaporttiOpettaja.cshtml" />
-    <Content Include="Views\Shared\_AdminLayoutPage1.cshtml" />
-    <Content Include="Views\Shared\_OppilasLayoutPage1.cshtml" />
-    <Content Include="Views\Shared\_LoginLayoutPage1.cshtml" />
+    <Content Include="Views\OpettajaRaportti\TuntiRaporttiOpettaja.cshtml" />
+    <Content Include="Views\OpettajaRaportti\Create.cshtml" />
+    <Content Include="Views\OpettajaRaportti\Edit.cshtml" />
+    <Content Include="Views\OpettajaRaportti\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -352,11 +352,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
