@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TuntiLeimausDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TuntiLeimausDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -54,6 +54,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar" MaxLength="256" />
           <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
           <Property Name="PasswordHash" Type="nvarchar(max)" />
@@ -65,8 +67,6 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="FirstName" Type="nchar" MaxLength="50" />
-          <Property Name="LastName" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Luokkahuone">
           <Key>
@@ -165,18 +165,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TuntiRaportti_Luokkahuone">
-          <End Role="Luokkahuone" Type="Self.Luokkahuone" Multiplicity="0..1" />
-          <End Role="TuntiRaportti" Type="Self.TuntiRaportti" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Luokkahuone">
-              <PropertyRef Name="LuokkahuoneID" />
-            </Principal>
-            <Dependent Role="TuntiRaportti">
-              <PropertyRef Name="LuokkahuoneID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="TuntiLeimausDBModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -208,10 +196,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_TuntiRaportti_AspNetUsers" Association="Self.FK_TuntiRaportti_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="TuntiRaportti" EntitySet="TuntiRaportti" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TuntiRaportti_Luokkahuone" Association="Self.FK_TuntiRaportti_Luokkahuone">
-            <End Role="Luokkahuone" EntitySet="Luokkahuone" />
             <End Role="TuntiRaportti" EntitySet="TuntiRaportti" />
           </AssociationSet>
         </EntityContainer>
@@ -274,8 +258,8 @@
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="TuntiRaportti" Relationship="Self.FK_TuntiRaportti_AspNetUsers" FromRole="AspNetUsers" ToRole="TuntiRaportti" />

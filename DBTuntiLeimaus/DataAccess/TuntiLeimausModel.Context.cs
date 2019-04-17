@@ -32,7 +32,5 @@ namespace DBTuntiLeimaus.DataAccess
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Luokkahuone> Luokkahuone { get; set; }
         public virtual DbSet<TuntiRaportti> TuntiRaportti { get; set; }
-
-        public System.Data.Entity.DbSet<DBTuntiLeimaus.ViewModels.LeimausViewModel> LeimausViewModels { get; set; }
     }
 }

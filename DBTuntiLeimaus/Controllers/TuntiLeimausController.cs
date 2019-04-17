@@ -4,11 +4,7 @@ using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Globalization;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace DBTuntiLeimaus.Controllers
@@ -17,7 +13,7 @@ namespace DBTuntiLeimaus.Controllers
     {
         // GET: TuntiLeimaus
         public bool OK { get; private set; }      
-        [Authorize(Roles = "Oppilas")]
+        //[Authorize(Roles = "Oppilas")]
         // GET: Leimaus
         public ActionResult Index()
         {
@@ -27,7 +23,7 @@ namespace DBTuntiLeimaus.Controllers
             ViewBag.LuokkahuoneID = new SelectList(entities.Luokkahuone, "LuokkahuoneID", "LuokkahuoneenNimi");
             return View();
         }
-        [Authorize(Roles = "Oppilas")]
+        //[Authorize(Roles = "Oppilas")]
         public JsonResult GetList()
         {
             string userInId = User.Identity.GetUserId();
@@ -87,7 +83,7 @@ namespace DBTuntiLeimaus.Controllers
             return Json(OK, JsonRequestBehavior.AllowGet);
 
         }
-        [Authorize(Roles = "Oppilas")]
+        //[Authorize(Roles = "Oppilas")]
         public ActionResult Ulos(TuntiRaportti pro)
         {
             TuntiLeimausDBEntities entities = new TuntiLeimausDBEntities();
@@ -115,9 +111,8 @@ namespace DBTuntiLeimaus.Controllers
 
         }
 
-        [Authorize(Roles = "Oppilas")]
+        //[Authorize(Roles = "Oppilas")]
         public ActionResult TuntiRaporttiOppilas()
-
 
         {
             //tähän luotu luokka
@@ -138,7 +133,6 @@ namespace DBTuntiLeimaus.Controllers
 
                 foreach (TuntiRaportti tuntiRaportti in time)
                 {
-
                     LeimausViewModel view = new LeimausViewModel();
 
                     view.Id = tuntiRaportti.IDleimaus;

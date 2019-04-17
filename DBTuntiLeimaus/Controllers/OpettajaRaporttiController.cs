@@ -17,7 +17,7 @@ namespace DBTuntiLeimaus.Controllers
         {
             return View();
         }
-        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
+        //[Authorize(Roles = "Opettaja, Admin, SuperUser")]
         public ActionResult TuntiRaporttiOpettaja()
 
 
@@ -59,7 +59,7 @@ namespace DBTuntiLeimaus.Controllers
             }
         }
         // GET: Opettaja/Create
-        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
+        //[Authorize(Roles = "Opettaja, Admin, SuperUser")]
         public ActionResult Create()
         {
 
@@ -71,7 +71,7 @@ namespace DBTuntiLeimaus.Controllers
 
         // POST: Opettaja/Create
         [HttpPost]
-        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
+        //[Authorize(Roles = "Opettaja, Admin, SuperUser")]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IDleimaus,Sisaan,Ulos,OppilasID,LuokkahuoneID")] TuntiRaportti tuntiRaportti)
         {
@@ -129,7 +129,7 @@ namespace DBTuntiLeimaus.Controllers
 
 
         // GET: Opettaja/Delete/5
-        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
+        //[Authorize(Roles = "Opettaja, Admin, SuperUser")]
         public ActionResult Delete(int? id)
         {
 
@@ -147,7 +147,7 @@ namespace DBTuntiLeimaus.Controllers
         }
 
         // POST: Opettaja/Delete/5
-        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
+        //[Authorize(Roles = "Opettaja, Admin, SuperUser")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
