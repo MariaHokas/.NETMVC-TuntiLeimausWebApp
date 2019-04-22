@@ -54,8 +54,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar(max)" />
-          <Property Name="LastName" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar" MaxLength="256" />
           <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
           <Property Name="PasswordHash" Type="nvarchar(max)" />
@@ -67,6 +65,8 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="nchar" MaxLength="50" />
+          <Property Name="LastName" Type="nchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Luokkahuone">
           <Key>
@@ -165,6 +165,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TuntiRaportti_Luokkahuone">
+          <End Role="Luokkahuone" Type="Self.Luokkahuone" Multiplicity="0..1" />
+          <End Role="TuntiRaportti" Type="Self.TuntiRaportti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Luokkahuone">
+              <PropertyRef Name="LuokkahuoneID" />
+            </Principal>
+            <Dependent Role="TuntiRaportti">
+              <PropertyRef Name="LuokkahuoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TuntiLeimausDBModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -196,6 +208,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_TuntiRaportti_AspNetUsers" Association="Self.FK_TuntiRaportti_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="TuntiRaportti" EntitySet="TuntiRaportti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TuntiRaportti_Luokkahuone" Association="Self.FK_TuntiRaportti_Luokkahuone">
+            <End Role="Luokkahuone" EntitySet="Luokkahuone" />
             <End Role="TuntiRaportti" EntitySet="TuntiRaportti" />
           </AssociationSet>
         </EntityContainer>
@@ -258,12 +274,12 @@
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="TuntiRaportti" Relationship="Self.FK_TuntiRaportti_AspNetUsers" FromRole="AspNetUsers" ToRole="TuntiRaportti" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <NavigationProperty Name="TuntiRaportti" Relationship="TuntiLeimausDBModel.FK_TuntiRaportti_AspNetUsers" FromRole="AspNetUsers" ToRole="TuntiRaportti" />
         </EntityType>
         <EntityType Name="Luokkahuone">
           <Key>
@@ -273,19 +289,7 @@
           <Property Name="LuokkahuoneenNimi" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Luokkahuone1" Relationship="Self.FK_Luokkahuone_Luokkahuone" FromRole="Luokkahuone" ToRole="Luokkahuone1" />
           <NavigationProperty Name="Luokkahuone2" Relationship="Self.FK_Luokkahuone_Luokkahuone" FromRole="Luokkahuone1" ToRole="Luokkahuone" />
-          <NavigationProperty Name="TuntiRaportti" Relationship="Self.FK_TuntiRaportti_Luokkahuone" FromRole="Luokkahuone" ToRole="TuntiRaportti" />
-        </EntityType>
-        <EntityType Name="TuntiRaportti">
-          <Key>
-            <PropertyRef Name="IDleimaus" />
-          </Key>
-          <Property Name="IDleimaus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Sisaan" Type="DateTime" Precision="3" />
-          <Property Name="Ulos" Type="DateTime" Precision="3" />
-          <Property Name="OppilasID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="LuokkahuoneID" Type="Int32" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_TuntiRaportti_AspNetUsers" FromRole="TuntiRaportti" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Luokkahuone" Relationship="Self.FK_TuntiRaportti_Luokkahuone" FromRole="TuntiRaportti" ToRole="Luokkahuone" />
+          <NavigationProperty Name="TuntiRaportti" Relationship="TuntiLeimausDBModel.FK_TuntiRaportti_Luokkahuone" FromRole="Luokkahuone" ToRole="TuntiRaportti" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -315,18 +319,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TuntiRaportti_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
-          <End Role="TuntiRaportti" Type="Self.TuntiRaportti" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TuntiRaportti">
-              <PropertyRef Name="OppilasID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Luokkahuone_Luokkahuone">
           <End Role="Luokkahuone" Type="Self.Luokkahuone" Multiplicity="1" />
           <End Role="Luokkahuone1" Type="Self.Luokkahuone" Multiplicity="0..1" />
@@ -335,18 +327,6 @@
               <PropertyRef Name="LuokkahuoneID" />
             </Principal>
             <Dependent Role="Luokkahuone1">
-              <PropertyRef Name="LuokkahuoneID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TuntiRaportti_Luokkahuone">
-          <End Role="Luokkahuone" Type="Self.Luokkahuone" Multiplicity="0..1" />
-          <End Role="TuntiRaportti" Type="Self.TuntiRaportti" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Luokkahuone">
-              <PropertyRef Name="LuokkahuoneID" />
-            </Principal>
-            <Dependent Role="TuntiRaportti">
               <PropertyRef Name="LuokkahuoneID" />
             </Dependent>
           </ReferentialConstraint>
@@ -362,7 +342,6 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="Luokkahuone" EntityType="Self.Luokkahuone" />
-          <EntitySet Name="TuntiRaportti" EntityType="Self.TuntiRaportti" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -371,23 +350,60 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
-          <AssociationSet Name="FK_TuntiRaportti_AspNetUsers" Association="Self.FK_TuntiRaportti_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="TuntiRaportti" EntitySet="TuntiRaportti" />
-          </AssociationSet>
           <AssociationSet Name="FK_Luokkahuone_Luokkahuone" Association="Self.FK_Luokkahuone_Luokkahuone">
             <End Role="Luokkahuone" EntitySet="Luokkahuone" />
             <End Role="Luokkahuone1" EntitySet="Luokkahuone" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TuntiRaportti_Luokkahuone" Association="Self.FK_TuntiRaportti_Luokkahuone">
-            <End Role="Luokkahuone" EntitySet="Luokkahuone" />
-            <End Role="TuntiRaportti" EntitySet="TuntiRaportti" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="TuntiRaportti" EntityType="TuntiLeimausDBModel.TuntiRaportti" />
+          <AssociationSet Name="FK_TuntiRaportti_AspNetUsers" Association="TuntiLeimausDBModel.FK_TuntiRaportti_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="TuntiRaportti" EntitySet="TuntiRaportti" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TuntiRaportti_Luokkahuone" Association="TuntiLeimausDBModel.FK_TuntiRaportti_Luokkahuone">
+            <End Role="Luokkahuone" EntitySet="Luokkahuone" />
+            <End Role="TuntiRaportti" EntitySet="TuntiRaportti" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="TuntiRaportti">
+          <Key>
+            <PropertyRef Name="IDleimaus" />
+          </Key>
+          <Property Name="IDleimaus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sisaan" Type="DateTime" Precision="3" />
+          <Property Name="Ulos" Type="DateTime" Precision="3" />
+          <Property Name="OppilasID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LuokkahuoneID" Type="Int32" />
+          <NavigationProperty Name="AspNetUsers" Relationship="TuntiLeimausDBModel.FK_TuntiRaportti_AspNetUsers" FromRole="TuntiRaportti" ToRole="AspNetUsers" />
+          <NavigationProperty Name="Luokkahuone" Relationship="TuntiLeimausDBModel.FK_TuntiRaportti_Luokkahuone" FromRole="TuntiRaportti" ToRole="Luokkahuone" />
+        </EntityType>
+        <Association Name="FK_TuntiRaportti_AspNetUsers">
+          <End Type="TuntiLeimausDBModel.AspNetUsers" Role="AspNetUsers" Multiplicity="0..1" />
+          <End Type="TuntiLeimausDBModel.TuntiRaportti" Role="TuntiRaportti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TuntiRaportti">
+              <PropertyRef Name="OppilasID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TuntiRaportti_Luokkahuone">
+          <End Type="TuntiLeimausDBModel.Luokkahuone" Role="Luokkahuone" Multiplicity="0..1" />
+          <End Type="TuntiLeimausDBModel.TuntiRaportti" Role="TuntiRaportti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Luokkahuone">
+              <PropertyRef Name="LuokkahuoneID" />
+            </Principal>
+            <Dependent Role="TuntiRaportti">
+              <PropertyRef Name="LuokkahuoneID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -459,17 +475,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TuntiRaportti">
-            <EntityTypeMapping TypeName="TuntiLeimausDBModel.TuntiRaportti">
-              <MappingFragment StoreEntitySet="TuntiRaportti">
-                <ScalarProperty Name="IDleimaus" ColumnName="IDleimaus" />
-                <ScalarProperty Name="Sisaan" ColumnName="Sisaan" />
-                <ScalarProperty Name="Ulos" ColumnName="Ulos" />
-                <ScalarProperty Name="OppilasID" ColumnName="OppilasID" />
-                <ScalarProperty Name="LuokkahuoneID" ColumnName="LuokkahuoneID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="TuntiLeimausDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
@@ -478,6 +483,17 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="TuntiRaportti">
+            <EntityTypeMapping TypeName="TuntiLeimausDBModel.TuntiRaportti">
+              <MappingFragment StoreEntitySet="TuntiRaportti">
+                <ScalarProperty Name="LuokkahuoneID" ColumnName="LuokkahuoneID" />
+                <ScalarProperty Name="OppilasID" ColumnName="OppilasID" />
+                <ScalarProperty Name="Ulos" ColumnName="Ulos" />
+                <ScalarProperty Name="Sisaan" ColumnName="Sisaan" />
+                <ScalarProperty Name="IDleimaus" ColumnName="IDleimaus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

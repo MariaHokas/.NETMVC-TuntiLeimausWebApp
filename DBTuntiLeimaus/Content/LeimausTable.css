@@ -1,0 +1,9 @@
+﻿
+table.leimaus_table {
+    border-collapse: collapse;
+    background: rgba(5,4,2,0.2);
+    color: white;
+    font-size: larger;
+    overflow-x: auto;
+    width: 100%;
+}

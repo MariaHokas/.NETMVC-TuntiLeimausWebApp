@@ -11,7 +11,7 @@
                         "<td>" + leimaus[index].LuokkahuoneID + "</td>" +
                         "</tr>\r\n";
                 }
-                $("#leimausList tbody").html(html);
+                $(".leimausList tbody").html(html);
                 //tästä lisätty
             });
         }

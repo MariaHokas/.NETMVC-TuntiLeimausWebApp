@@ -5,50 +5,60 @@
 
 }
 
-<h2>TuntiRaporttiOpettaja</h2>
-<link href="~/Content/Leimaus.css" rel="stylesheet" />
-<button class="btn btn-secondary">
-    @Html.ActionLink("Create New", "Create")
-</button>
-<table class="table">
-    <tr>
-        <th></th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sisään)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ulos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Luokkahuone)
-        </th>
-        <th></th>
-    </tr>
+<body style="background-color:black">
 
-@foreach (var item in Model) {
-    <tr>
-        <td class="small">
-            @Html.ActionLink(" ", "Edit", null, new { id = item.Id }, new { @class = "fas fa-pencil-alt" })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sisään)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ulos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Luokkahuone)
-        </td>
-        <td class="small">
-            @Html.ActionLink(" ", "Delete", null, new { id = item.Id }, new { @class = "far fa-trash-alt" })
-        </td>
-    </tr>
-}
+    <h2>TuntiRaporttiOpettaja</h2>
+    <link href="~/Content/Leimaus.css" rel="stylesheet" />
+    <link href="~/Content/LeimausPager.css" rel="stylesheet" />
+    <link href="~/Content/LeimausTable.css" rel="stylesheet" />
+    <button class="btn btn-secondary">
+        @Html.ActionLink("Create New", "Create")
+    </button>
 
-</table>
+    <script src="~/Scripts/LeimausPager.js"></script>
+    <table class="table table leimaus_table" id="tabledata">
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sisään)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ulos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Luokkahuone)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="small">
+                    @Html.ActionLink(" ", "Edit", null, new { id = item.Id }, new { @class = "fas fa-pencil-alt" })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sisään)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ulos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Luokkahuone)
+                </td>
+                <td class="small">
+                    @Html.ActionLink(" ", "Delete", null, new { id = item.Id }, new { @class = "far fa-trash-alt" })
+                </td>
+            </tr>
+        }
+
+
+    </table>
+    <div id="pageNavPosition"></div>
+</body>

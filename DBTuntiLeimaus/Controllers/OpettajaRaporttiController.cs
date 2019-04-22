@@ -12,6 +12,7 @@ namespace DBTuntiLeimaus.Controllers
 {
     public class OpettajaRaporttiController : Controller
     {
+
         // GET: OpettajaRaportti
         public ActionResult Index()
         {
@@ -117,6 +118,7 @@ namespace DBTuntiLeimaus.Controllers
             TuntiLeimausDBEntities entities = new TuntiLeimausDBEntities();
             if (ModelState.IsValid)
             {
+
                 entities.Entry(tuntiRaportti).State = EntityState.Modified;
                 entities.SaveChanges();
                 return RedirectToAction("TuntiRaporttiOpettaja");

@@ -4,10 +4,10 @@
     Layout = "~/Views/Shared/_OppilasLayoutPage1.cshtml";
 }
 
-<body>
+<body style="background-color:black;">
 
     <link href="~/Content/Leimaus.css" rel="stylesheet" />
-
+    <link href="~/Content/LeimausPager.css" rel="stylesheet" />
 
     <div class="w3-content bgimg" style="max-width:1400px">
         <div class="w3-container ">
@@ -33,13 +33,12 @@
                     </div>
                 </div>
                 <script src="~/Scripts/Leimaus.js"></script>
-
+                <script src="~/Scripts/LeimausPager.js"></script>
                 <div class="w3-twothird w3-card">
-                    <div class="w3-container w3-card w3-white w3-margin-bottom" style="margin-left:30px">
-                        <table class="table table-bordered" id="leimausList" style=" background-color:white">
+                    <div class="" style="margin-left:30px">
+                        <table class="table table-bordered leimausList" id="tabledata" style=" background-color:white">
                             <thead style="background-color:white">
                                 <tr style="background-color:white">
-
                                     <th>User</th>
                                     <th>Sisään</th>
                                     <th>ulos</th>
@@ -47,7 +46,10 @@
                             </thead>
                             <tbody></tbody>
                         </table>
+
+                        <div id="pageNavPosition"></div>
                     </div>
+                    <div id="pageNavPosition"></div>
                 </div>
             </div>
         </div>

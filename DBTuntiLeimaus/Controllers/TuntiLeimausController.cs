@@ -83,7 +83,7 @@ namespace DBTuntiLeimaus.Controllers
             return Json(OK, JsonRequestBehavior.AllowGet);
 
         }
-        //[Authorize(Roles = "Oppilas")]
+        [Authorize(Roles = "Oppilas")]
         public ActionResult Ulos(TuntiRaportti pro)
         {
             TuntiLeimausDBEntities entities = new TuntiLeimausDBEntities();

@@ -7,19 +7,17 @@
 
 <h2>TuntiRaporttiOppilas</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Nimi)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Sisään)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Ulos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nimi)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Luokkahuone)
@@ -30,13 +28,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Nimi)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Sisään)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Ulos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nimi)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Luokkahuone)

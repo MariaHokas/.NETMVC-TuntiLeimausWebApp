@@ -19,8 +19,8 @@ namespace DBTuntiLeimaus.DataAccess
         {
             this.AspNetUserClaims = new HashSet<AspNetUserClaims>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
-            this.TuntiRaportti = new HashSet<TuntiRaportti>();
             this.AspNetRoles = new HashSet<AspNetRoles>();
+            this.TuntiRaportti = new HashSet<TuntiRaportti>();
         }
     
         public string Id { get; set; }
@@ -43,8 +43,8 @@ namespace DBTuntiLeimaus.DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TuntiRaportti> TuntiRaportti { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetRoles> AspNetRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TuntiRaportti> TuntiRaportti { get; set; }
     }
 }

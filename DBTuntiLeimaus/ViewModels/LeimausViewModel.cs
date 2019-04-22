@@ -11,12 +11,17 @@ namespace DBTuntiLeimaus.ViewModels
         //ID niin view ei näytä, mutta pystyy käyttämään
         public int Id { get; set; }
 
-        //[DataType(DataType.DateTime)]
-        //[DisplayFormat(DataFormatString = "{0:dd\\.MM\\.yyyy HH:mm:ss}", ApplyFormatInEditMode = false)]
+        //[Display(Name = "Sisään")]
+        //[DataType(DataType.Date) ]
+        //[DisplayFormat(DataFormatString = "{hh:mm:ss}", ApplyFormatInEditMode = true)]
+        //[datatype(datatype.datetime), displayformat(applyformatineditmode = true, convertemptystringtonull = true, dataformatstring = "{0: dd/mmm/yyyy hh:mm:ss}", htmlencode = true, nulldisplaytext = "-")]
+        //[display(name = "sisään")]
+        //[required(allowemptystrings = false, errormessage = "last update is required.")]
         public DateTime? Sisään { get; set; }
 
-        //[DataType(DataType.DateTime)]
-        //[DisplayFormat(DataFormatString = "{0:dd\\.MM\\.yyyy HH:mm:ss}", ApplyFormatInEditMode = false)]
+        //[display(name = "ulos")]
+        //[datatype(datatype.datetime)]
+        //[displayformat(dataformatstring = "{0:dd.mm.yyyy hh:mm:ss}", applyformatineditmode = true)]
         public DateTime? Ulos { get; set; }
         public string Nimi { get; set; }
         public string Luokkahuone { get; set; }

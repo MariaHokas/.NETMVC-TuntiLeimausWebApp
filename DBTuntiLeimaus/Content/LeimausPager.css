@@ -1,0 +1,98 @@
+﻿
+
+* {
+    box-sizing: border-box;
+}
+
+form.example input[type=text] {
+    padding: 4px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: white;
+    border-radius: 4px;
+}
+
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 4px;
+    background: black;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+    form.example button:hover {
+        background: grey;
+    }
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+/*.GridviewScrollHeader TH, .GridviewScrollHeader TD {
+            padding: 5px;
+            font-weight: bold;
+            white-space: nowrap;
+            border-right: 1px solid #AAAAAA;
+            border-bottom: 1px solid #AAAAAA;
+            background-color: #EFEFEF;
+            text-align: center;
+            vertical-align: bottom;
+        }
+        .GridviewScrollItem TD {
+            padding: 5px;
+            white-space: nowrap;
+            border-right: 1px solid #AAAAAA;
+            border-bottom: 1px solid #AAAAAA;
+            background-color: #FFFFFF;
+        }*/
+.GridviewScrollPager {
+    border-top: 1px solid #AAAAAA;
+    background-color: white;
+}
+
+    .GridviewScrollPager TD {
+        padding-top: 3px;
+        font-size: 11px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .GridviewScrollPager A {
+        color: white;
+    }
+
+    .GridviewScrollPager SPAN {
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+.inner_table {
+    width: 50%;
+    border-collapse: collapse;
+    overflow: auto;
+    height: 300px;
+    display: inherit;
+}
+
+.pg-normal {
+    color: white;
+    font-weight: normal;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.pg-selected {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
