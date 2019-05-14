@@ -12,7 +12,7 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
+                <h4>Use a local account to log in</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -53,12 +53,36 @@
         </section>
     </div>
     <div class="col-md-4">
-        <section id="socialLoginForm">
+        @*<section id="socialLoginForm">
             @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
+        </section>*@
+        <form action="/action_page.php">
+            <div class="row">
+                <h4 style="text-align:center">Login with Social Media</h4>
 
+                @*<div class="col">*@
+                <fa style="text-align: center"></fa>
+                <div class="col-md-10">
+                    <a href="#" class="fa fa-facebook">  Log in with Facebook</a>
+                        <a href="#" class="fa fa-twitter">  Log in with Twitter</a>
+                            <a href="#" class="fa fa-google">  Log in with Google+</a>
+                            @*</div>*@
+                        </div>
+                </div>
+</form>
+    </div>
+
+    @*<div class="bottom-container">
+        <div class="row">
+            <div class="col">
+                <a href="#" style="color:white" class="btn">Sign up</a>
+            </div>
+            <div class="col">
+                <a href="#" style="color:white" class="btn">Forgot password?</a>
+            </div>
+        </div>
+    </div>*@
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }  
