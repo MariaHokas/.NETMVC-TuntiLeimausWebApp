@@ -59,7 +59,8 @@ h1, p {
 
 .bgimg {
     background-image: url("../../Images/etusivu_taustakuva_iso.png");
-    min-height: 10%;
+    min-height: 100%;
+    max-width: 100%;
     background-size: cover;
     background-position: initial;
     background-repeat: no-repeat;
@@ -70,4 +71,46 @@ td.small {
     padding: 30px 0;
     width: 10%;
     font-size: 20px;
+}
+
+.form-high{
+    margin-top: 20%;
+
+}
+
+.dropdown {
+    border: 1px solid rgba(255, 193, 7, 0.75);
+}
+
+.form-control:hover {
+    color: rgb(255, 193, 7);
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.75);
+}
+.form-control li:active {
+    background: red;
+    color: White;
+}
+
+.form-control: option {
+    /* Whatever color  you want */
+    background-color: #82caff;
+}
+
+@media only screen and (max-width: 600px) {
+    .bgimg {
+        background-image: url("../../Images/etusivu_taustakuva_iso.png");
+        background-position: center;
+        min-height: 300%;
+        min-width: 300%;
+        background-size: cover;
+        background-position: initial;
+        background-repeat: no-repeat;
+    }
+    .form-high {
+        margin-top: 150px;
+        margin-bottom: 150px;
+    }
 }

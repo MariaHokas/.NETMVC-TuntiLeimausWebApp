@@ -4,12 +4,12 @@
     Layout = "~/Views/Shared/_OppilasLayoutPage1.cshtml";
 }
 
-<body style="background-color:black;">
+<body class="bgimg" style="background-color:black;">
 
     <link href="~/Content/Leimaus.css" rel="stylesheet" />
     <link href="~/Content/LeimausPager.css" rel="stylesheet" />
 
-    <div class="w3-content bgimg" style="max-width:1400px">
+    <div class="w3-content" style="max-width:1400px">
         <div class="w3-container ">
             <!-- Grid -->
             <div class="w3-row w3-content" style="margin-top:40px;">
@@ -17,11 +17,7 @@
                 <div>
                     <div class="container">
                         <form class="">
-                            <div class="form-group">
-                                <label class="p" for="Opiskelijanumero" style="color:white;">Opiskelijanumero:</label>
-                                <input type="text" class="form-control" id="leiModal_Oid" placeholder="Anna opiskelijanumero">
-                            </div>
-                            <div style="margin-bottom:140px;">
+                            <div class="form-high">
 
                                 @Html.DropDownList("LuokkahuoneID", null, htmlAttributes: new { @class = "form-control", @id = "leiModal_Lid" })
 
@@ -34,7 +30,7 @@
                 </div>
                 <script src="~/Scripts/Leimaus.js"></script>
                 <script src="~/Scripts/LeimausPager.js"></script>
-                <div class="w3-twothird w3-card">
+                @*<div class="w3-twothird w3-card">
                     <div class="" style="margin-left:30px">
                         <table class="table table-bordered leimausList" id="tabledata" style=" background-color:white">
                             <thead style="background-color:white">
@@ -50,7 +46,7 @@
                         <div id="pageNavPosition"></div>
                     </div>
                     <div id="pageNavPosition"></div>
-                </div>
+                </div>*@
             </div>
         </div>
     </div>
