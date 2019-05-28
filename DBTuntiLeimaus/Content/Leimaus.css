@@ -54,7 +54,7 @@ div.img-top{
     color: black;
     background-color: white;
     border-radius: 50%;
-    border: 3px solid rgba(255, 193, 7, 0.75);
+    border: 4px solid rgba(255, 193, 7, 0.75);
     width: 100px;
     height: 100px;
     padding: 10px 16px;
@@ -93,7 +93,7 @@ td.small {
 }
 
 .dropdown {
-    border: 3px solid rgba(255, 193, 7, 0.75);
+    border: 4px solid rgba(255, 193, 7, 0.75);
 }
 
 .form-control:hover {
@@ -135,18 +135,167 @@ td.small {
         background: rgba(255, 193, 7, 0.75);
     }
 
-    @media only screen and (max-width: 600px) {
-        .bgimg {
+@media only screen and (max-width: 1024px) {
+
+    .btn-warning-square {
+        color: white;
+        background-color: rgba(255, 193, 7, 0.15);
+        border: 1px solid rgba(255, 193, 7, 0.75);
+        min-width: 150px;
+        height: 35px;
+        font-size: 16px;
+        line-height: 1.33;
+    }
+
+    .form-hight {
+        margin-top: 40%;
+        margin-bottom: 20px;
+    }
+
+}
+@media only screen and (max-width: 769px) {
+
+    .btn-warning-square {
+        color: white;
+        background-color: rgba(255, 193, 7, 0.15);
+        border: 1px solid rgba(255, 193, 7, 0.75);
+        min-width: 120px;
+        height: 35px;
+        font-size: 16px;
+        line-height: 1.33;
+    }
+
+    .btn-warning {
+        color: black;
+        background-color: white;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 193, 7, 0.75);
+        width: 100px;
+        height: 100px;
+        padding: 10px 16px;
+        border-radius: 50px;
+        font-size: 22px;
+        line-height: 1.33;
+        margin-right: 40px;
+        margin-top: 30px;
+    }
+
+    .dropdown {
+        border: 2px solid rgba(255, 193, 7, 0.75);
+    }
+
+
+    .img-mini {
+        width: 150px;; 
+        height: 75px;
+    }
+
+    .form-hight {
+        margin-top: 40%;
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 668px) {
+    .bgimg {
         background-image: url("../../Images/etusivu_taustakuva_iso.png");
         background-position: center;
-        min-height: 300%;
-        min-width: 300%;
+        min-height: 110%;
+        min-width: 110%;
         background-size: cover;
-        background-position: initial;
+        background-position: left;
         background-repeat: no-repeat;
     }
-    .form-high {
-        margin-top: 150px;
-        margin-bottom: 150px;
+
+
+    .form-hight {
+        margin-top: 30%;
+        margin-bottom: 100px;
+    }
+
+    .btn-warning-square {
+        color: white;
+        background-color: rgba(255, 193, 7, 0.15);
+        border: 1px solid rgba(255, 193, 7, 0.75);
+        min-width: 150px;
+        height: 35px;
+        font-size: 16px;
+        line-height: 1.33;
+        margin-left: 40px;
+    }
+
+    .btn-warning {
+        color: black;
+        background-color: white;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 193, 7, 0.75);
+        width: 100px;
+        height: 100px;
+        padding: 10px 16px;
+        border-radius: 50px;
+        font-size: 22px;
+        line-height: 1.33;
+        margin-right: 40px;
+        margin-top: 30px;
+    }
+
+    .img-mini {
+        display: none;
+    }
+
+    .dropdown {
+        border: 1px solid rgba(255, 193, 7, 0.75);
+    }
+
+    @media only screen and (max-width: 600px) {
+        .bgimg {
+            background-image: url("../../Images/etusivu_taustakuva_iso.png");
+            background-position: center;
+            min-height: 140%;
+            min-width: 140%;
+            background-size: cover;
+            background-position: left;
+            background-repeat: no-repeat;
+        }
+
+
+        .form-hight {
+            margin-top: 50%;
+            margin-bottom: 100px;
+        }
+
+        .btn-warning-square {
+            color: white;
+            background-color: rgba(255, 193, 7, 0.15);
+            border: 1px solid rgba(255, 193, 7, 0.75);
+            min-width: 200px;
+            height: 35px;
+            font-size: 16px;
+            line-height: 1.33;
+            margin-left: 40px;
+        }
+
+        .btn-warning {
+            color: black;
+            background-color: white;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 193, 7, 0.75);
+            width: 100px;
+            height: 100px;
+            padding: 10px 16px;
+            border-radius: 50px;
+            font-size: 22px;
+            line-height: 1.33;
+            margin-right: 40px;
+            margin-top: 30px;
+        }
+
+        .img-mini {
+            display: none;
+        }
+
+        .dropdown {
+            border: 1px solid rgba(255, 193, 7, 0.75);
+        }
     }
 }
