@@ -230,6 +230,7 @@
     <Content Include="Content\Leimaus.css" />
     <Content Include="Content\LeimausPager.css" />
     <Content Include="Content\LeimausTable.css" />
+    <Content Include="Content\Raportti.css" />
     <Content Include="DataAccess\TuntiLeimausModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TuntiLeimausModel.edmx</DependentUpon>
@@ -288,6 +289,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Leimaus.js" />
     <Content Include="Scripts\LeimausPager.js" />
+    <Content Include="Scripts\LeimausSearch.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />

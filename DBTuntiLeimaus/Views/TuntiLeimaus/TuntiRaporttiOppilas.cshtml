@@ -5,41 +5,61 @@
     //Layout = "~/Views/Shared/_OppilasLayoutPage1.cshtml";
 }
 
-<h2>TuntiRaporttiOppilas</h2>
+<link href="~/Content/Leimaus.css" rel="stylesheet" />
+<link href="~/Content/LeimausPager.css" rel="stylesheet" />
+<link href="~/Content/LeimausTable.css" rel="stylesheet" />
+<script src="~/Scripts/LeimausSearch.js"></script>
+<body style="background-color:black" class="abcdimage">
 
-<table class="table">
-    <tr>
+    <link href="~/Content/Leimaus.css" rel="stylesheet" />
+    <link href="~/Content/LeimausPager.css" rel="stylesheet" />
+    <link href="~/Content/LeimausTable.css" rel="stylesheet" />
+    <script src="~/Scripts/LeimausPager.js"></script>
+    <div class="title">
+        <h1 style="color:white;" align="center">Oma tuntiraporttini</h1>
+        <p style="color:white;" align="center">Tarkastele omaa tuntiraporttiasi</p>
 
-        <th>
-            @Html.DisplayNameFor(model => model.Nimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sisään)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ulos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Luokkahuone)
-        </th>
-        <th></th>
-    </tr>
+        <form class="example search">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Etsi luokalla.." name="search2">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <table class="table table leimaus_table" id="tabledata">
+            <tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sisään)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ulos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Luokkahuone)
-        </td>
-    </tr>
-}
+                <th>
+                    @Html.DisplayNameFor(model => model.Nimi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sisään)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ulos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Luokkahuone)
+                </th>
+                <th></th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sisään)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ulos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Luokkahuone)
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <div id="pageNavPosition"></div>
+    </div>
+</body>

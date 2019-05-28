@@ -6,4 +6,29 @@ table.leimaus_table {
     font-size: larger;
     overflow-x: auto;
     width: 100%;
+    margin-top: 30px;
+}
+
+.abcdimage {
+    background-image: url("../Images/opettaja_taustakuva_iso.png");
+    min-height: 100px;
+    background-size: cover;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+div.title{
+
+    margin-top: 10%;
+}
+
+.search {
+    margin: auto;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    float: right;
 }
