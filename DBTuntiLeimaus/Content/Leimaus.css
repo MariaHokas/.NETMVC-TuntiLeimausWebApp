@@ -54,7 +54,7 @@ div.img-top{
     color: black;
     background-color: white;
     border-radius: 50%;
-    border: 4px solid rgba(255, 193, 7, 0.75);
+    border: 2px solid rgba(255, 193, 7, 0.75);
     width: 100px;
     height: 100px;
     padding: 10px 16px;
@@ -71,11 +71,12 @@ div.img-top{
 
 .bgimg {
     background-image: url("../../Images/etusivu_taustakuva_iso.png");
-    min-height: 100%;
-    max-width: 90%;
+    height: 100%;
+    width: 100%;
     background-size: cover;
     background-position: inherit;
     background-repeat: no-repeat;
+    margin-left: 0;
    
 }
 td.small {
@@ -93,8 +94,16 @@ td.small {
 }
 
 .dropdown {
-    border: 4px solid rgba(255, 193, 7, 0.75);
+    border: 2px solid rgba(255, 193, 7, 0.75);
 }
+
+    .dropdown:hover {
+        color: rgb(255, 193, 7);
+        background-color: #fff;
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.75);
+    }
 
 .form-control:hover {
     color: rgb(255, 193, 7);
@@ -103,6 +112,8 @@ td.small {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.75);
 }
+
+
 .form-control li:active {
     background: red;
     color: White;

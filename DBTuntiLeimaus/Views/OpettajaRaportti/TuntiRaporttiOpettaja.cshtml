@@ -5,60 +5,70 @@
 
 }
 
-<body style="background-color:black">
+<body style="background-color:black" class="abcdimage">
 
     <h2>TuntiRaporttiOpettaja</h2>
     <link href="~/Content/Leimaus.css" rel="stylesheet" />
     <link href="~/Content/LeimausPager.css" rel="stylesheet" />
     <link href="~/Content/LeimausTable.css" rel="stylesheet" />
-    <button class="btn btn-secondary">
-        @Html.ActionLink("Create New", "Create")
-    </button>
+    <script src="~/Scripts/LeimausSearch.js"></script>
+    <div class="title">
+        <h1 style="color:white;" align="center">Tuntiraporttin</h1>
+        <p align="center">Tarkastele Oppilaiden tunteja</p>
 
-    <script src="~/Scripts/LeimausPager.js"></script>
-    <table class="table table leimaus_table" id="tabledata">
-        <tr>
-            <th></th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sisään)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Ulos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nimi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Luokkahuone)
-            </th>
-            <th></th>
-        </tr>
+        <form class="example search">
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Etsi luokalla.." name="search2">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <button class="btn btn-secondary">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "secondary" })
+        </button>
 
-        @foreach (var item in Model)
-        {
+        <script src="~/Scripts/LeimausPager.js"></script>
+        <table class="table table leimaus_table" id="tabledata">
             <tr>
-                <td class="small">
-                    @Html.ActionLink(" ", "Edit", null, new { id = item.Id }, new { @class = "fas fa-pencil-alt" })
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Sisään)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ulos)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nimi)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Luokkahuone)
-                </td>
-                <td class="small">
-                    @Html.ActionLink(" ", "Delete", null, new { id = item.Id }, new { @class = "far fa-trash-alt" })
-                </td>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sisään)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ulos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nimi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Luokkahuone)
+                </th>
+                <th></th>
             </tr>
-        }
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="small">
+                        @Html.ActionLink(" ", "Edit", null, new { id = item.Id }, new { @class = "fas fa-pencil-alt secondary-span" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sisään)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ulos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nimi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Luokkahuone)
+                    </td>
+                    <td class="small">
+                        @Html.ActionLink(" ", "Delete", null, new { id = item.Id }, new { @class = "far fa-trash-alt secondary-span" })
+                    </td>
+                </tr>
+            }
 
 
-    </table>
-    <div id="pageNavPosition"></div>
+        </table>
+        <div id="pageNavPosition"></div>
+    </div>
 </body>

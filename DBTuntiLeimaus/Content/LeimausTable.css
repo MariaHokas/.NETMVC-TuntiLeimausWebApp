@@ -23,12 +23,33 @@ table.leimaus_table {
 
 div.title{
 
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 0;
 }
 
 .search {
     margin: auto;
-    margin-top: 35px;
+    margin-top: 0px;
     margin-bottom: 20px;
     float: right;
+}
+
+p {
+    color: rgb(255, 193, 7);
+}
+.btn-secondary {
+    color: rgb(255, 193, 7);
+    background-color: #6c757d;
+    border-color: rgb(255, 193, 7);
+}
+
+.secondary {
+    color: rgb(255, 193, 7);
+    background-color: #6c757d;
+    border-color: rgb(255, 193, 7);
+}
+.secondary-span {
+    color: rgb(255, 193, 7);
+    background-color: transparent;
+    border-color: rgb(255, 193, 7);
 }
