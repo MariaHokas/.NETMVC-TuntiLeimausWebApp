@@ -4,52 +4,79 @@
     Layout = "~/Views/Shared/_OppilasLayoutPage1.cshtml";
 }
 
-<body class="bgimg" style="background-color:black;">
+<body container" style="background-color:black;">
+    <div class="row container-fluid">
 
-    <link href="~/Content/Leimaus.css" rel="stylesheet" />
-    <link href="~/Content/LeimausPager.css" rel="stylesheet" />
 
-    <div class="w3-content" style="max-width:1400px">
-        <div class="w3-container ">
-            <!-- Grid -->
-            <div class="w3-row w3-content" style="margin-top:40px;">
-                <!-- Sites -->
-                <div>
-                    <div class="container">
-                        <form class="">
-                            <div class="form-high">
+        <link href="~/Content/Leimaus.css" rel="stylesheet" />
+        <link href="~/Content/LeimausPager.css" rel="stylesheet" />
 
-                                @Html.DropDownList("LuokkahuoneID", null, htmlAttributes: new { @class = "form-control", @id = "leiModal_Lid" })
+        <div class="col-sm-10 bgimg img">
+            <div class="container">
+                <!-- Grid -->
+                <div class="w3-row w3-content" style="margin-top:40px;">
+                    <!-- Sites -->
+                    <div>
+                        <div class="container-fluid">
+                            <form class="">
+                                <div class="form-hight">
 
-                                <button type="button" class="btn btn-warning" id="SaveButton">Sisään</button>
-                                <button type="button" class="btn btn-warning" id="UlosButton">Ulos</button>
+                                    @Html.DropDownList("LuokkahuoneID", null, htmlAttributes: new { @class = "form-control dropdown", @id = "leiModal_Lid" })
 
-                            </div>
-                        </form>
+                                    <button type="button" class="btn btn-warning" id="SaveButton">Sisään</button>
+                                    <button type="button" class="btn btn-warning" id="UlosButton">Ulos</button>
+
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <script src="~/Scripts/Leimaus.js"></script>
-                <script src="~/Scripts/LeimausPager.js"></script>
-                @*<div class="w3-twothird w3-card">
-                    <div class="" style="margin-left:30px">
-                        <table class="table table-bordered leimausList" id="tabledata" style=" background-color:white">
-                            <thead style="background-color:white">
-                                <tr style="background-color:white">
-                                    <th>User</th>
-                                    <th>Sisään</th>
-                                    <th>ulos</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-
-                        <div id="pageNavPosition"></div>
-                    </div>
-                    <div id="pageNavPosition"></div>
-                </div>*@
             </div>
         </div>
-    </div>
+            <div class="col-sm-1">
+                
+                <div class="row btn-margin-top">
+                    <button class="btn btn-warning-square"> Outlook</button>
+                </div>
+                <div class="row btn-margin">
+                    <button class="btn btn-warning-square"> Moodle</button>
+                </div>
+                <div class="row btn-margin">
+                    <button class="btn btn-warning-square"> Wilma</button>
+                </div>
+                <div class="row btn-margin">
+                    <button class="btn btn-warning-square"> Careeria.fi</button>
+                </div>
+                <div class="row btn-margin">
+                    <button class="btn btn-warning-square"> Testi</button>
+                </div>
 
+
+            </div>
+     
+        <script src="~/Scripts/Leimaus.js"></script>
+        <script src="~/Scripts/LeimausPager.js"></script>
+        @*<div class="w3-twothird w3-card">
+            <div class="" style="margin-left:30px">
+                <table class="table table-bordered leimausList" id="tabledata" style=" background-color:white">
+                    <thead style="background-color:white">
+                        <tr style="background-color:white">
+                            <th>User</th>
+                            <th>Sisään</th>
+                            <th>ulos</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+                <div id="pageNavPosition"></div>
+            </div>
+            <div id="pageNavPosition"></div>
+        </div>*@
+
+
+
+
+    </div>
 </body>
 

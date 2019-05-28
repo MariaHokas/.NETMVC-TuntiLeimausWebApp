@@ -9,6 +9,14 @@ h1, p {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+h6 {
+    color: white;
+    font-family: Arial-bold, Helvetica, sans-serif;
+}
+div.img{
+    margin-right: 45px;
+}
+
 .p {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
@@ -42,7 +50,7 @@ h1, p {
     color: black;
     background-color: white;
     border-radius: 50%;
-    border: 1px solid rgba(255, 193, 7, 0.75);
+    border: 3px solid rgba(255, 193, 7, 0.75);
     width: 100px;
     height: 100px;
     padding: 10px 16px;
@@ -60,10 +68,11 @@ h1, p {
 .bgimg {
     background-image: url("../../Images/etusivu_taustakuva_iso.png");
     min-height: 100%;
-    max-width: 100%;
+    max-width: 90%;
     background-size: cover;
-    background-position: initial;
+    background-position: inherit;
     background-repeat: no-repeat;
+   
 }
 td.small {
     margin-top: 15px;
@@ -73,13 +82,14 @@ td.small {
     font-size: 20px;
 }
 
-.form-high{
-    margin-top: 20%;
+.form-hight{
+    margin-top: 30%;
+    margin-bottom: 400px;
 
 }
 
 .dropdown {
-    border: 1px solid rgba(255, 193, 7, 0.75);
+    border: 3px solid rgba(255, 193, 7, 0.75);
 }
 
 .form-control:hover {
@@ -96,11 +106,33 @@ td.small {
 
 .form-control: option {
     /* Whatever color  you want */
-    background-color: #82caff;
+    background-color: rgba(255, 193, 7, 0.75);
+}
+.btn-margin{
+
+    margin-top: 35px;
+    margin-right: 0px;
 }
 
-@media only screen and (max-width: 600px) {
-    .bgimg {
+.btn-margin-top {
+    margin-top: 150px;
+
+}
+.btn-warning-square {
+    color: white;
+    background-color: rgba(255, 193, 7, 0.15);
+    border: 1px solid rgba(255, 193, 7, 0.75);
+    min-width: 200px;
+    height: 35px;
+    font-size: 16px;
+    line-height: 1.33;
+}
+    .btn-warning-square:hover {
+        background: rgba(255, 193, 7, 0.75);
+    }
+
+    @media only screen and (max-width: 600px) {
+        .bgimg {
         background-image: url("../../Images/etusivu_taustakuva_iso.png");
         background-position: center;
         min-height: 300%;
