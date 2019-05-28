@@ -14,7 +14,11 @@ h6 {
     font-family: Arial-bold, Helvetica, sans-serif;
 }
 div.img{
-    margin-right: 45px;
+    margin-left: 40px;
+}
+div.img-top{
+
+    margin-top: 20px;
 }
 
 .p {
@@ -115,7 +119,7 @@ td.small {
 }
 
 .btn-margin-top {
-    margin-top: 150px;
+    margin-top: 60px;
 
 }
 .btn-warning-square {

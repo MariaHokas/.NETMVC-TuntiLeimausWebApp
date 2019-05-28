@@ -243,6 +243,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Careeria_logo_valkoinen.png" />
     <Content Include="Images\etusivu_taustakuva_iso.png" />
     <Content Include="Images\opettaja_taustakuva_iso.png" />
     <Content Include="Images\oppilas_taustakuva.png" />
