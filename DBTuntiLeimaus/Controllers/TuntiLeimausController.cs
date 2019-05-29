@@ -23,6 +23,7 @@ namespace DBTuntiLeimaus.Controllers
 
             ViewBag.LuokkahuoneID = new SelectList(entities.Luokkahuone, "LuokkahuoneID", "LuokkahuoneenNimi");
             return View();
+         
         }
         //[Authorize(Roles = "Oppilas")]
         public JsonResult GetList()

@@ -229,6 +229,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Leimaus.css" />
+    <Content Include="Content\LeimausNav.css" />
     <Content Include="Content\LeimausPager.css" />
     <Content Include="Content\LeimausTable.css" />
     <Content Include="Content\Raportti.css" />
@@ -290,6 +291,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\Leimaus.js" />
+    <Content Include="Scripts\LeimausNav.js" />
     <Content Include="Scripts\LeimausPager.js" />
     <Content Include="Scripts\LeimausSearch.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
