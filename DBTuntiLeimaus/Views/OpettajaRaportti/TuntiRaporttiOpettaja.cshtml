@@ -12,15 +12,15 @@
     <link href="~/Content/LeimausTable.css" rel="stylesheet" />
     <script src="~/Scripts/LeimausSearch.js"></script>
     <div class="title">
-        <h1 style="color:white;" align="center">Tuntiraporttin</h1>
-        <p align="center">Tarkastele Oppilaiden tunteja</p>
+        <h1 style="color:white;" align="center">Tuntiraportti</h1>
+        <p align="center">Tarkastele oppilaiden tunteja</p>
 
         <form class="example search">
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Etsi luokalla.." name="search2">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
         <button class="btn btn-secondary">
-            @Html.ActionLink("Create New", "Create", null, new { @class = "secondary" })
+            @Html.ActionLink("Luo uusi", "Create", null, new { @class = "secondary" })
         </button>
 
         <script src="~/Scripts/LeimausPager.js"></script>
