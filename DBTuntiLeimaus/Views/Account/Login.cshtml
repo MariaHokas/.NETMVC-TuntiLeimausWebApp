@@ -5,14 +5,14 @@
     Layout = "~/Views/Shared/_LoginLayoutPage1.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>Kirjaudu sisään</h2>
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Use a local account to log in</h4>
+                <h4>Kirjaudu paikallisella tilillä</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -43,12 +43,9 @@
                     </div>
                 </div>
                 <p>
-                    @Html.ActionLink("Register as a new user", "Register")
+                    @Html.ActionLink("Rekisteröidy uutena käyttäjänä", "Rekisteröidy")
                 </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
+ 
             }
         </section>
     </div>
@@ -58,30 +55,19 @@
         </section>*@
         <form action="/action_page.php">
             <div class="row">
-                <h4 style="text-align:center">Login with Social Media</h4>
+                <h4 style="text-align:center">Kirjaudu sosiaalisen median tilillä</h4>
 
                 @*<div class="col">*@
                 <fa style="text-align: center"></fa>
                 <div class="col-md-10">
-                    <a href="#" class="fa fa-facebook">  Log in with Facebook</a>
-                        <a href="#" class="fa fa-twitter">  Log in with Twitter</a>
-                            <a href="#" class="fa fa-google">  Log in with Google+</a>
+                    <a href="#" class="fa fa-facebook"> Kirjaudu Facebook tunnuksilla</a>
+                        <a href="#" class="fa fa-twitter">  Kirjaudu Twitter tunnuksilla</a>
+                            <a href="#" class="fa fa-google">  Kirjaudu Google+ tunnuksilla</a>
                             @*</div>*@
                         </div>
                 </div>
 </form>
     </div>
-
-    @*<div class="bottom-container">
-        <div class="row">
-            <div class="col">
-                <a href="#" style="color:white" class="btn">Sign up</a>
-            </div>
-            <div class="col">
-                <a href="#" style="color:white" class="btn">Forgot password?</a>
-            </div>
-        </div>
-    </div>*@
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

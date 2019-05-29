@@ -245,6 +245,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\15830.jpg" />
     <Content Include="Images\Careeria_logo_valkoinen.png" />
     <Content Include="Images\etusivu_taustakuva_iso.png" />
     <Content Include="Images\opettaja_taustakuva_iso.png" />
@@ -354,6 +355,7 @@
     <Content Include="Views\OpettajaRaportti\Create.cshtml" />
     <Content Include="Views\OpettajaRaportti\Edit.cshtml" />
     <Content Include="Views\OpettajaRaportti\Delete.cshtml" />
+    <Content Include="Views\Shared\OpettajaEditLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
