@@ -1,4 +1,5 @@
 ﻿using DBTuntiLeimaus.DataAccess;
+using DBTuntiLeimaus.Models;
 using DBTuntiLeimaus.ViewModels;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
@@ -60,6 +61,7 @@ namespace DBTuntiLeimaus.Controllers
             TuntiLeimausDBEntities entities = new TuntiLeimausDBEntities();
             bool OK = false;
 
+
             if (pro.IDleimaus == 0)
 
             {
@@ -72,17 +74,35 @@ namespace DBTuntiLeimaus.Controllers
                     OppilasID = User.Identity.GetUserId(),
                     Sisaan = DateTime.Now,
                 };
-                
+
+                if (pro.LuokkahuoneID == null)
+
+                {
+
+                    OK = false;
+                }
+
+                else { 
                 // tallennus tietokantaan
                 entities.TuntiRaportti.Add(dbItem);
                 entities.SaveChanges();
                 OK = true;
+
+                }
+
+            }
+
+            else
+            {
+                OK = false;
             }
 
             entities.Dispose();
             return Json(OK, JsonRequestBehavior.AllowGet);
 
         }
+
+
         [Authorize(Roles = "Oppilas")]
         public ActionResult Ulos(TuntiRaportti pro)
         {

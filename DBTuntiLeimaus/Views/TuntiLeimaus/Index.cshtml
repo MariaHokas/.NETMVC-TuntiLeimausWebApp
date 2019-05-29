@@ -10,6 +10,7 @@
 
         <link href="~/Content/Leimaus.css" rel="stylesheet" />
         <link href="~/Content/LeimausPager.css" rel="stylesheet" />
+        <script src="~/Scripts/Leimaus.js"></script>
 
         <div class="col-md-10 bgimg container-fluid">
             <div class="container-fluid">
@@ -21,7 +22,7 @@
                             <form class="">
                                 <div class="form-hight">
 
-                                    @Html.DropDownList("LuokkahuoneID", null, "-Valitse luokkahuone-", htmlAttributes: new { @class = "form-control dropdown", @id = "leiModal_Lid", @placeholder= "Luokkahuone"  })
+                                    @Html.DropDownList("LuokkahuoneID", null, "-Valitse luokkahuone-", htmlAttributes: new { @class = "form-control dropdown", @id = "leiModal_Lid", @placeholder = "Luokkahuone" })
 
                                     <button type="button" class="btn btn-warning" id="SaveButton">Sisään</button>
                                     <button type="button" class="btn btn-warning" id="UlosButton">Ulos</button>
@@ -60,7 +61,7 @@
                 </div>
             </div>
         </div>
-        <script src="~/Scripts/Leimaus.js"></script>
+
         <script src="~/Scripts/LeimausPager.js"></script>
         @*<div class="w3-twothird w3-card">
             <div class="" style="margin-left:30px">

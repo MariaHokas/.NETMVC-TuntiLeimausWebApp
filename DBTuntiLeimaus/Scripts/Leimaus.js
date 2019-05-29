@@ -27,11 +27,11 @@
     };
                     $.post("/TuntiLeimaus/Sisaan/", details, function (status) {
                         if (status == true) {
-            alert("Sisään kirjautuminen tallennettu!");
+            alert("Sisäänkirjautuminen tallennettu!");
         päivitäAsiakaslistaus();
     }
                         else {
-            alert("Tallennus ei onnistunut, yritä uudelleen!");
+            alert("Sisäänkirjautuminen ei onnistunut! Tarkista että valitsit luokkahuoneen!");
         }
     });
 });
@@ -50,11 +50,11 @@ console.log("Alustus valmis!");
     };
                     $.post("/TuntiLeimaus/ulos/", details, function (status) {
                         if (status == true) {
-            alert("Ulos leimaus tallennettu!");
+            alert("Uloskirjautuminen tallennettu!");
         päivitäAsiakaslistaus();
     }
                         else {
-            alert("Tallennus ei onnistunut, yritä uudelleen!");
+                            alert("Uloskirjautuminen ei onnistunut, yritä uudelleen!");
         }
     });
 });
