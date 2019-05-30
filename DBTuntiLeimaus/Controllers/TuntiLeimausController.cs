@@ -34,6 +34,7 @@ namespace DBTuntiLeimaus.Controllers
             var model = (from t in entities.TuntiRaportti
                          join au in entities.AspNetUsers on t.OppilasID equals au.Id
                          where userInId == t.OppilasID
+                         orderby t.IDleimaus descending
                          select new
                          {
                              t.IDleimaus,
@@ -43,7 +44,7 @@ namespace DBTuntiLeimaus.Controllers
                              t.Ulos,
                              t.LuokkahuoneID
 
-                         }).ToList();
+                         }).Take(1);
            
 
             string json = JsonConvert.SerializeObject(model);
@@ -114,6 +115,8 @@ namespace DBTuntiLeimaus.Controllers
                                     where t.OppilasID == userInId
                                     orderby t.IDleimaus descending
                                     select t).First();
+
+            if (dbItem.Ulos == null)
             {
 
                 dbItem.Ulos = DateTime.Now;
@@ -122,6 +125,13 @@ namespace DBTuntiLeimaus.Controllers
                 entities.SaveChanges();
                 OK = true;
                 ModelState.Clear();
+            }
+
+            else
+
+            {
+
+                OK = false;
             }
 
             //entiteettiolion vapauttaminen

@@ -2,6 +2,7 @@
             $.getJSON("/TuntiLeimaus/getlist", null, function (json) {
                 var leimaus = JSON.parse(json);
                 var html = "";
+
                 for (var index = 0; index < leimaus.length; index++) {
                     html += "<tr>"
                         +
@@ -27,7 +28,8 @@
     };
                     $.post("/TuntiLeimaus/Sisaan/", details, function (status) {
                         if (status == true) {
-            alert("Sisäänkirjautuminen tallennettu!");
+                            alert("Sisäänkirjautuminen tallennettu!");                           
+
         päivitäAsiakaslistaus();
     }
                         else {
@@ -50,11 +52,15 @@ console.log("Alustus valmis!");
     };
                     $.post("/TuntiLeimaus/ulos/", details, function (status) {
                         if (status == true) {
-            alert("Uloskirjautuminen tallennettu!");
+                            $("#ulosha").click(function () {
+                                $("tbody").toggle();
+                            });
+                            alert("Uloskirjautuminen tallennettu!");
+
         päivitäAsiakaslistaus();
     }
                         else {
-                            alert("Uloskirjautuminen ei onnistunut, yritä uudelleen!");
+                            alert("Uloskirjautuminen ei onnistunut! Tarkista oletko leimannut sinään!");
         }
     });
 });
