@@ -3,10 +3,10 @@
 @{
     ViewBag.Title = "Manage your external logins";
 }
-
+<p class="text-success">@ViewBag.StatusMessage</p>
 <h2>@ViewBag.Title.</h2>
 
-<p class="text-success">@ViewBag.StatusMessage</p>
+
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
     if (loginProviders.Count() == 0) {
