@@ -1,5 +1,9 @@
 ﻿
 
+body.black{
+    background-color: black;
+}
+
 .page-header {
     text-align: center;
 }
@@ -9,9 +13,12 @@ h1, p {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-h6 {
+h6{
     color: white;
     font-family: Arial-bold, Helvetica, sans-serif;
+}
+.welcome {
+    color: rgb(255, 193, 7);
 }
 div.img{
     margin-left: 40px;
@@ -143,6 +150,21 @@ td.small {
     line-height: 1.33;
 }
     .btn-warning-square:hover {
+        background: rgba(255, 193, 7, 0.75);
+    }
+
+.btn-warning-squareope {
+    color: white;
+    background-color: rgba(255, 193, 7, 0.15);
+    border: 1px solid rgba(255, 193, 7, 0.75);
+    min-width: 200px;
+    height: 35px;
+    font-size: 16px;
+    padding: 20px;
+    line-height: 0.33;
+}
+
+    .btn-warning-squareope:hover {
         background: rgba(255, 193, 7, 0.75);
     }
 

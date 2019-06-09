@@ -8,30 +8,14 @@
 {
     Layout = "~/Views/Shared/_OpettajaLayoutPage1.cshtml";
 
-    <h2>  Tervetuloa käyttäjä <strong>@ViewBag.Name</strong> :) </h2>
-
-
-    <div class="row">
-        <div class="col-md-1 img">
-
-            <div class="row btn-margin-top">
-                <a href="https://outlook.office365.com" button class="btn btn-warning-square">Outlook</a>
-            </div>
-            <div class="row btn-margin">
-                <a href="https://www.careeria.fi/moodle-login/" class="btn btn-warning-square"> Moodle</a>
-            </div>
-            <div class="row btn-margin">
-                <a href="https://wilma.careeria.fi/" class="btn btn-warning-square"> Wilma</a>
-            </div>
-            <div class="row btn-margin">
-                <a href="https://www.careeria.fi/" class="btn btn-warning-square"> Careeria.fi</a>
-            </div>
-
-            <div class="row btn-margin">
-                <a href="https://www.careeria.fi/edupoli-oy/" class="btn btn-warning-square">Edupoli oy</a>
-            </div>
+<body class="black">
+    <div class="form-horizontal" align="center" style="margin-top: 20%;">
+        <h2 class="welcome">  Tervetuloa käyttäjä <strong>@ViewBag.Name!</strong> </h2>
+        <div class="form-horizontal btn-margin-top">
+            <a href="~/OpettajaRaportti/TuntiRaporttiOpettaja" button class="btn btn-warning-squareope">Siirry raporttiin</a>
         </div>
     </div>
+</body>
 }
 
 else
@@ -39,6 +23,17 @@ else
 
     Layout = "~/Views/Shared/_OppilasLayoutPage1.cshtml";
 
+<body class="black">
+    
 
-    <h2>  Tervetuloa käyttäjä <strong>@ViewBag.Name</strong> :) </h2>
+    <div class="form-horizontal" align="center" style="margin-top: 20%;">
+        <h2 class="welcome"> Tervetuloa käyttäjä <strong>@ViewBag.Name</strong> :) </h2>
+        <div class="form-horizontal btn-margin-top">
+            <a href="~/tuntileimaus/index" button class="btn btn-warning-squareope">siirry leimaukseen</a>
+        </div>
+        <div class="form-horizontal btn-margin-top">
+            <a href="~/tuntileimaus/index" button class="btn btn-warning-squareope">siirry raporttiin</a>
+        </div>
+    </div>
+</body>
 }
