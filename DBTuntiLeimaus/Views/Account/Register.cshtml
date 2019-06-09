@@ -16,14 +16,14 @@
         @Html.ValidationSummary("", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(m => m.FirstName, "Etunimi", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(m => m.LastName, "Sukunimi", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
             </div>
@@ -31,7 +31,7 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(m => m.Email, "Sähköposti", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
             </div>
@@ -39,26 +39,26 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(m => m.UserName, "Käyttäjätunnus", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(m => m.Password, "Salasana", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(m => m.ConfirmPassword, "Vahvista salasana", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.Label("user Role", new { @class = "col-md-2 control-label" })
+            @Html.Label("Käyttäjärooli", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
                 @*@Html.DropDownList("Name")*@
                 @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, " ")

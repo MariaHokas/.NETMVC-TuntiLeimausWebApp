@@ -12,41 +12,42 @@
 
     <h4>Tuntiraportti</h4>
     <h3>Oletko varma, että haluat poistaa tämän raportin?</h3>
-    <dl class="dl-horizontal" align="center">
-        <dt>
-            @Html.DisplayNameFor(model => model.Sisaan)
-        </dt>
+    <div class="form-horizontal" align="center">
+        <dl class="dl-horizontal" align="center">
+            <dt>
+                @Html.DisplayNameFor(model => model.Sisaan)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sisaan)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Sisaan)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ulos)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Ulos)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ulos)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Ulos)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AspNetUsers.UserName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUsers.UserName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AspNetUsers.UserName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUsers.UserName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Luokkahuone.LuokkahuoneenNimi)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Luokkahuone.LuokkahuoneenNimi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Luokkahuone.LuokkahuoneenNimi)
-        </dd>
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Luokkahuone.LuokkahuoneenNimi)
+            </dd>
+        </dl>
 
-
+    </div>
     <div class="form-actions no-color" align="center">
         <input type="submit" value="Poista" class="btn btn-secondary"/> 
     </div>
