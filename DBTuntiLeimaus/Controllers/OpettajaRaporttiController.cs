@@ -60,7 +60,7 @@ namespace DBTuntiLeimaus.Controllers
             }
         }
         // GET: Opettaja/Create
-        //[Authorize(Roles = "Opettaja, Admin, SuperUser")]
+        [Authorize(Roles = "Opettaja, Admin, SuperUser")]
         public ActionResult Create()
         {
 

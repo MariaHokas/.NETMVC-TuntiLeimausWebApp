@@ -358,6 +358,7 @@
     <Content Include="Views\OpettajaRaportti\Edit.cshtml" />
     <Content Include="Views\OpettajaRaportti\Delete.cshtml" />
     <Content Include="Views\Shared\OpettajaEditLayout.cshtml" />
+    <Content Include="Views\Shared\_OpettajaLayoutPage1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

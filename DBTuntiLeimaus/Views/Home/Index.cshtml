@@ -1,31 +1,44 @@
 ﻿@{
+    /**/
+
     ViewBag.Title = "Home Page";
 }
+<link href="~/Content/Leimaus.css" rel="stylesheet" />
+@if (ViewBag.displayMenu == "Yes")
+{
+    Layout = "~/Views/Shared/_OpettajaLayoutPage1.cshtml";
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <h2>  Tervetuloa käyttäjä <strong>@ViewBag.Name</strong> :) </h2>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+
+    <div class="row">
+        <div class="col-md-1 img">
+
+            <div class="row btn-margin-top">
+                <a href="https://outlook.office365.com" button class="btn btn-warning-square">Outlook</a>
+            </div>
+            <div class="row btn-margin">
+                <a href="https://www.careeria.fi/moodle-login/" class="btn btn-warning-square"> Moodle</a>
+            </div>
+            <div class="row btn-margin">
+                <a href="https://wilma.careeria.fi/" class="btn btn-warning-square"> Wilma</a>
+            </div>
+            <div class="row btn-margin">
+                <a href="https://www.careeria.fi/" class="btn btn-warning-square"> Careeria.fi</a>
+            </div>
+
+            <div class="row btn-margin">
+                <a href="https://www.careeria.fi/edupoli-oy/" class="btn btn-warning-square">Edupoli oy</a>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+}
+
+else
+{
+
+    Layout = "~/Views/Shared/_OppilasLayoutPage1.cshtml";
+
+
+    <h2>  Tervetuloa käyttäjä <strong>@ViewBag.Name</strong> :) </h2>
+}

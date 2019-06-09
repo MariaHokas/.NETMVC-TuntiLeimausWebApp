@@ -14,7 +14,7 @@ namespace DBTuntiLeimaus.Controllers
     {
         // GET: TuntiLeimaus
         public bool OK { get; private set; }      
-        //[Authorize(Roles = "Oppilas")]
+        [Authorize(Roles = "Oppilas")]
         // GET: Leimaus
         public ActionResult Index()
         {
@@ -25,7 +25,7 @@ namespace DBTuntiLeimaus.Controllers
             return View();
          
         }
-        //[Authorize(Roles = "Oppilas")]
+        [Authorize(Roles = "Oppilas")]
         public JsonResult GetList()
         {
             string userInId = User.Identity.GetUserId();
@@ -142,7 +142,7 @@ namespace DBTuntiLeimaus.Controllers
 
         }
 
-        //[Authorize(Roles = "Oppilas")]
+        [Authorize(Roles = "Oppilas")]
         public ActionResult TuntiRaporttiOppilas()
 
         {
